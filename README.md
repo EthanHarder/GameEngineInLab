@@ -2,6 +2,16 @@
 
 Ethan Harder - 100877874
 
+
+#Submission 2_ Factory
+<img width="637" height="503" alt="image" src="https://github.com/user-attachments/assets/c329fc09-0b9c-4fa8-b8a2-b561b3da57db" />
+
+
+
+
+
+
+#Submission 1_ Singleton
 <img width="692" height="620" alt="image" src="https://github.com/user-attachments/assets/4416bddd-b304-4847-851d-4da17d0d3666" />
 
 
