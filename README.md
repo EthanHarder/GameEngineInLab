@@ -11,7 +11,7 @@ Ethan Harder - 100877874
 
 
 
-#Submission 1_ Singleton
+# Submission 1_ Singleton
 <img width="692" height="620" alt="image" src="https://github.com/user-attachments/assets/4416bddd-b304-4847-851d-4da17d0d3666" />
 
 
