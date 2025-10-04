@@ -18,14 +18,16 @@ The factory design pattern is implemented to facilitate crops that require diffe
 -Soybeans spawn. I couldn't think of anything clever about soybeans. We'll call it a default behaviour. 
 
 To perform this, I have a new CropSpawner singleton, (basically a manager) with the enums for crops and a list of crop factories for each crop i would want to produce. When a plot finishes growing and wants to spawn a crop, it sends the crop type and location, and the CropSpawner passes that to the correct Factory to spawn the crop in the manner it needs. 
-This way, the CropSpawner class is feature-complete (to an extent), and you only need to add more crop factories to the list if more crops are added. Additionally, all crop spawning logic is held in their own factories, so we can avoid one big switch statement on spawning behaviours.
+
+This way, the CropSpawner class is feature-complete (to an extent), and you only need to add more crop factories to the list if more crops are added. If I wanted to add, say, watermelons, I wouldnt need to add anything to the CropSpawner script. Additionally, all crop spawning logic is held in their own factories, so we can avoid one big switch statement on spawning behaviours.
 
 the crops are all Crops, as in they inherit from a Crop abstract class.
 Because there were concerns of minimal interactivity, i added the manual planting and also made the crops collectable. Blueberries and pineapples dont do anything yet, but Soybeans give you a permanent move speed boost.
 
 
+<img width="1282" height="768" alt="image" src="https://github.com/user-attachments/assets/4a12be0b-7259-4164-9de2-e61ac7c6d6b4" />
 
-
+The topmost benefit is that im offloading lots of logic away from my already bloated plot script, and let crops be completely unrelated (aside from a one-way reference to the croptype enum in CropSpawner).
 
 
 
