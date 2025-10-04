@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 4398556707551369677}
   - component: {fileID: 2090354122186350047}
   - component: {fileID: 4881429602539951610}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plot
-  m_TagString: Untagged
+  m_TagString: LandPlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34,6 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2224680317991039695}
+  - {fileID: 7743032264699440506}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6855477052950028071
@@ -64,6 +65,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -85,6 +88,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -108,8 +112,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.79, y: 0.23, z: 0.77}
-  m_Center: {x: 0, y: 0.14, z: 0}
+  m_Size: {x: 0.79, y: 0.65, z: 0.77}
+  m_Center: {x: 0, y: 0.45, z: 0}
 --- !u!114 &4881429602539951610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,11 +127,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hydrated: 0
+  hypdrationMax: 4
   growth: 0
   randomTickUpper: 600
   dirt_dry: {fileID: -876546973899608171, guid: a4a4e706b9a068940a56700393a57820, type: 3}
   dirt_wet: {fileID: -876546973899608171, guid: 6e79687bca9c60f4a80c731b413edf0e, type: 3}
   plant: {fileID: 5107626230980696914}
+  plantType: 0
+  cropSpawnPoint: {fileID: 4967025026944344875}
+--- !u!1 &4967025026944344875
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7743032264699440506}
+  m_Layer: 6
+  m_Name: CropSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7743032264699440506
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4967025026944344875}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.637, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6909945394680501660}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5300134610048778512
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,7 +175,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2224680317991039695}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,6 +258,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: 48bafefb2b6f6bd498346da47c632bec, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -5568371526223589888, guid: 48bafefb2b6f6bd498346da47c632bec, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: -4683669308469848369, guid: 48bafefb2b6f6bd498346da47c632bec, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -228,9 +274,17 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: -876546973899608171, guid: 12fe35b00d5e10742a001ba168620f30, type: 3}
+    - target: {fileID: -516098083770646512, guid: 48bafefb2b6f6bd498346da47c632bec, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 48bafefb2b6f6bd498346da47c632bec, type: 3}
       propertyPath: m_Name
       value: Plant
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 48bafefb2b6f6bd498346da47c632bec, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7202271454713460447, guid: 48bafefb2b6f6bd498346da47c632bec, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'

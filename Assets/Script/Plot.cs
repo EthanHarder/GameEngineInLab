@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Plot : MonoBehaviour
@@ -11,6 +13,8 @@ public class Plot : MonoBehaviour
     //Water resource, gained by rain
     [SerializeField]
     public float hydrated;
+
+    public float hypdrationMax;
 
     //progress to being fully grown
     public float growth = 0;
@@ -28,7 +32,13 @@ public class Plot : MonoBehaviour
     [SerializeField]
     public Material dirt_wet;
 
+
     public GameObject plant;
+
+    public CropSpawner.PlantType plantType;
+
+    [SerializeField]
+    private GameObject cropSpawnPoint;
 
     // Update is called once per frame
     void Update()
@@ -37,17 +47,7 @@ public class Plot : MonoBehaviour
         if (Weather._instance.currentWeather == Weather.WeatherState.Snow)
             return;
 
-        //Check if sunny to grow.
-       if (Weather._instance.currentWeather == Weather.WeatherState.Sunny && hydrated > 0.0f && growth <= 1)
-       {
-            //Spend hydrated to get a random lesser amount of growth
-            hydrated -= Time.deltaTime;
-            growth += Time.deltaTime * UnityEngine.Random.Range(0.0f, 0.3f);
-
-            //confine growth, just in case that matters later.
-            if (growth > 1.0f)
-                growth = 1.0f;
-        }
+        
 
 
        //There is a 1 in randomTickUpper chance that 
@@ -67,6 +67,28 @@ public class Plot : MonoBehaviour
 
         }
 
+        if (hydrated > hypdrationMax)
+        {
+            hydrated = hypdrationMax;
+        }
+
+
+       
+
+        //Check if sunny to grow.
+        if (Weather._instance.currentWeather == Weather.WeatherState.Sunny && hydrated > 0.0f && growth <= 1 && plantType != CropSpawner.PlantType.None)
+        {
+            //Spend hydrated to get a random lesser amount of growth
+            hydrated -= Time.deltaTime;
+            growth += Time.deltaTime * UnityEngine.Random.Range(0.0f, 0.3f);
+
+
+            if (growth >= 1.0f)
+            {
+                CropComplete();
+                growth = 0.0f;
+            }
+        }
 
         UpdateVisuals();
     }
@@ -88,5 +110,20 @@ public class Plot : MonoBehaviour
         //Grow plant based on growth variable
         plant.transform.localScale = new Vector3(growth,growth,growth);
 
+    }
+
+
+    public void NewPlant(CropSpawner.PlantType plantType)
+    {
+        plant.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+        this.plantType = plantType;
+    }
+
+    void CropComplete()
+    {
+        CropSpawner._instance.SpawnCrop(plantType, cropSpawnPoint.transform.position);
+
+        plant.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+        plantType = CropSpawner.PlantType.None;
     }
 }
