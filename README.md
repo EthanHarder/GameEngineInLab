@@ -10,8 +10,11 @@ To update Project: Phosphorus, different crops have been added!
 You can also now select a seed with 'E', and then plant the seed with 'Space' while standing over a plot.
 
 The factory design pattern is implemented to facilitate crops that require different spawning behaviours: 
+
 -Pineapples spawn (one per crop) with a random size. 
+
 -Blueberries spawn in a cluster per crop, with a random number. 
+
 -Soybeans spawn. I couldn't think of anything clever about soybeans. We'll call it a default behaviour. 
 
 To perform this, I have a new CropSpawner singleton, (basically a manager) with the enums for crops and a list of crop factories for each crop i would want to produce. When a plot finishes growing and wants to spawn a crop, it sends the crop type and location, and the CropSpawner passes that to the correct Factory to spawn the crop in the manner it needs. 
