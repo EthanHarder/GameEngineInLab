@@ -8,7 +8,10 @@ Ethan Harder - 100877874
 To update Project: Phosphorus, a lot of the old code has been refactored, as well as new plants and a new obstacle mechanic.
 
 The Observer pattern helps primary in this new patch to reduce bad dependancies. The Weather singleton no longer has a connection to the UI. The PlayerController no longer has a connection to the UI.  
-<img width="604" height="202" alt="image" src="https://github.com/user-attachments/assets/9eb7c99f-fa41-46fd-be2d-a54dca68948b" /><img width="517" height="99" alt="image" src="https://github.com/user-attachments/assets/500b5f3d-828b-4fe6-98db-b2e8daba17a6" />
+Weather changed to just an invoke:  
+<img width="604" height="202" alt="image" src="https://github.com/user-attachments/assets/9eb7c99f-fa41-46fd-be2d-a54dca68948b" />  
+HUD Changed to add listening to what it cares about. (Yeah, GameObject.Find("Player") isn't exactly beautiful. As for the other two, them being singletons is particularly helpful for the observer pattern; i can hook up to the static instance painlessly.
+<img width="517" height="99" alt="image" src="https://github.com/user-attachments/assets/500b5f3d-828b-4fe6-98db-b2e8daba17a6" />
 
 
 
