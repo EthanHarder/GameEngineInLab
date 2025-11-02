@@ -13,7 +13,7 @@ Weather changed to just an invoke:
 As was the player changing seed type:  
 <img width="527" height="240" alt="image" src="https://github.com/user-attachments/assets/f4607c51-e40e-458c-aa19-e5f4bc8463b5" />
 
-HUD Changed to add listening to what it cares about. (Yeah, GameObject.Find("Player") isn't exactly beautiful). As for the other two, them being singletons is particularly helpful for the observer pattern; i can hook up to the static instance painlessly.
+HUD Changed to add listening to what it cares about. (Yeah, I agknowledge GameObject.Find("Player") isn't exactly beautiful). As for the other two, them being singletons is particularly helpful for the observer pattern; i can hook up to the static instance painlessly.
 <img width="517" height="99" alt="image" src="https://github.com/user-attachments/assets/500b5f3d-828b-4fe6-98db-b2e8daba17a6" />
 
 The weather changing also has been updated to an observer event. Now, my plots dont need to check which weather to act on every frame, they just pick a behaviour and wait until they observe the next new weather to change behaviour.
