@@ -26,8 +26,10 @@ Starfruits have different behaviour based on the weather event when you eat them
 
 Finally, I wanted to add some new kind of gameplay element, just so the updates werent mainly just refactoring. I also have a thing for games without enemies or combat, so here was my idea:  
 Obstacles are the milestones of this game, and to break down an obstacle you need to be going fast enough.  
-Some Test crops have been provided for you so you dont have to wait for one to grow. They also use the observer pattern (through a manager) to communicate to the HUD.
+Some Test crops have been provided for you so you dont have to wait for one to grow. They also use the observer pattern (through a manager) to communicate to the HUD.  
 <img width="227" height="522" alt="image" src="https://github.com/user-attachments/assets/506057ff-7dfb-414b-8ee0-cdb7c6051e71" />
+
+
 
 
 
