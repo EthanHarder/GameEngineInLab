@@ -31,9 +31,9 @@ Some Test crops have been provided for you so you dont have to wait for one to g
 
 Attempt at a diagram:  
 <img width="1038" height="760" alt="image" src="https://github.com/user-attachments/assets/1f6a2040-5263-42f3-9424-8634fe352ad1" />
-I decided to start the diagram over instead of refactoring the entire thing. Hope it's okay that components unrelated to the observer additions are gone. The diagram lacks a couple minor things like how the HUD has to subscribe to the events at Start, but i think it shows the idea fairly well.
-
-
+I decided to start the diagram over instead of refactoring the entire thing. Hope it's okay that components unrelated to the observer additions are gone. The diagram lacks a couple minor things like how the HUD has to subscribe to the events at Start, but i think it shows the idea fairly well.  
+  
+  
   
   
   
