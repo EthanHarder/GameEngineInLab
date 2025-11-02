@@ -10,8 +10,21 @@ To update Project: Phosphorus, a lot of the old code has been refactored, as wel
 The Observer pattern helps primary in this new patch to reduce bad dependancies. The Weather singleton no longer has a connection to the UI. The PlayerController no longer has a connection to the UI.  
 Weather changed to just an invoke:  
 <img width="604" height="202" alt="image" src="https://github.com/user-attachments/assets/9eb7c99f-fa41-46fd-be2d-a54dca68948b" />  
+As was the player changing seed type:  
+<img width="527" height="240" alt="image" src="https://github.com/user-attachments/assets/f4607c51-e40e-458c-aa19-e5f4bc8463b5" />
+
 HUD Changed to add listening to what it cares about. (Yeah, GameObject.Find("Player") isn't exactly beautiful. As for the other two, them being singletons is particularly helpful for the observer pattern; i can hook up to the static instance painlessly.
 <img width="517" height="99" alt="image" src="https://github.com/user-attachments/assets/500b5f3d-828b-4fe6-98db-b2e8daba17a6" />
+
+The weather changing also has been updated to an observer event. Now, my plots dont need to check which weather to act on every frame, they just pick a behaviour and wait until they observe the next new weather to change behaviour.
+(I also added the beginnings of a state system to the plots, because i hated the old cluttered update function. Hopefully that doesnt mess with things down the line~).  
+<img width="367" height="291" alt="image" src="https://github.com/user-attachments/assets/e818449e-573f-4be4-a2c5-8453f4be312c" />
+
+I also realized I wanted to demonstrate when and why you need to detach a listener, so... we have a new crop!  
+Starfruits have different behaviour based on the weather event when you eat them. If you eat a ripe starfruit while its sunny, you get a large Spicy speed bonus. These listeners destroy themselves, so we have them detach beforehand:  
+<img width="521" height="117" alt="image" src="https://github.com/user-attachments/assets/f86cc781-4c27-409d-8939-ccc516f89aab" /><img width="462" height="162" alt="image" src="https://github.com/user-attachments/assets/b54d3ac6-2910-4efa-8905-e31efdd70755" />
+
+
 
 
 
