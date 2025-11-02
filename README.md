@@ -29,13 +29,14 @@ Obstacles are the milestones of this game, and to break down an obstacle you nee
 Some Test crops have been provided for you so you dont have to wait for one to grow. They also use the observer pattern (through a manager) to communicate to the HUD.  
 <img width="227" height="522" alt="image" src="https://github.com/user-attachments/assets/506057ff-7dfb-414b-8ee0-cdb7c6051e71" />
 
+Attempt at a diagram:  
+<img width="1038" height="760" alt="image" src="https://github.com/user-attachments/assets/1f6a2040-5263-42f3-9424-8634fe352ad1" />
+I decided to start the diagram over instead of refactoring the entire thing. Hope it's okay that components unrelated to the observer additions are gone. The diagram lacks a couple minor things like how the HUD has to subscribe to the events at Start, but i think it shows the idea fairly well.
 
 
-
-
-
-
-
+  
+  
+  
 # Submission 2_ Factory
 <img width="637" height="503" alt="image" src="https://github.com/user-attachments/assets/c329fc09-0b9c-4fa8-b8a2-b561b3da57db" />
 
