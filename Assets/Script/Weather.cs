@@ -26,9 +26,10 @@ public class Weather : MonoBehaviour
     private float currentDuration = 0;
 
 
-    public TMP_Text weatherText;
+ 
 
-
+    public delegate void Notify();
+    public event Notify WeatherChangeUpdate;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -67,18 +68,11 @@ public class Weather : MonoBehaviour
        
         //Prepare weather to last expected duration
         currentDuration = weatherDuration;
-        
-        UpdateWeatherText(currentWeather);
+
+        WeatherChangeUpdate?.Invoke();
         
 
     }
 
-    //Updates screen UI.
-    void UpdateWeatherText(WeatherState newWeather)
-    {
-        if (weatherText != null)
-        {
-            weatherText.text = System.Enum.GetName(typeof(WeatherState), newWeather);
-        }
-    }
+   
 }

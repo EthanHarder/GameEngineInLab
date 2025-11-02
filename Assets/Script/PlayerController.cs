@@ -14,15 +14,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     CropSpawner.PlantType currentSeeds;
+    public delegate void Notify(CropSpawner.PlantType newSeeds);
+    public event Notify SeedChange;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    public TMP_Text SeedText;
-    // Update is called once per frame
     void Update()
     {
         Vector3 moveVec = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
@@ -40,7 +34,7 @@ public class PlayerController : MonoBehaviour
 
             currentSeeds = (CropSpawner.PlantType)seedIndex;
 
-            UpdateSeedText();
+            SeedChange?.Invoke(currentSeeds);
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -57,14 +51,5 @@ public class PlayerController : MonoBehaviour
 
 
 
-    }
-
-    //Updates screen UI.
-    void UpdateSeedText()
-    {
-        if (SeedText != null)
-        {
-            SeedText.text = System.Enum.GetName(typeof(CropSpawner.PlantType), currentSeeds);
-        }
     }
 }

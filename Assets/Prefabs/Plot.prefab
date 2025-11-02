@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hydrated: 0
-  hypdrationMax: 4
+  hydrationMax: 10
   growth: 0
   randomTickUpper: 600
   dirt_dry: {fileID: -876546973899608171, guid: a4a4e706b9a068940a56700393a57820, type: 3}
@@ -135,6 +135,7 @@ MonoBehaviour:
   plant: {fileID: 5107626230980696914}
   plantType: 0
   cropSpawnPoint: {fileID: 4967025026944344875}
+  state: {fileID: 0}
 --- !u!1 &4967025026944344875
 GameObject:
   m_ObjectHideFlags: 0

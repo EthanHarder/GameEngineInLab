@@ -14,6 +14,7 @@ public class CropSpawner : MonoBehaviour
         Pineapple,
         Blueberries,
         Soybeans,
+        Starfruit
 
     }
 

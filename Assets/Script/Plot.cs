@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class Plot : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    
 
     //Water resource, gained by rain
     [SerializeField]
     public float hydrated;
 
-    public float hypdrationMax;
+    [SerializeField]
+    public float hydrationMax;
 
     //progress to being fully grown
     public float growth = 0;
@@ -23,8 +20,6 @@ public class Plot : MonoBehaviour
     //Random chance upper bound for checking if there is rain.
     [SerializeField]
     public int randomTickUpper;
-
-
 
     [SerializeField]
     public Material dirt_dry;
@@ -40,60 +35,34 @@ public class Plot : MonoBehaviour
     [SerializeField]
     private GameObject cropSpawnPoint;
 
+
+    public PlotState state;
+
+
+    void Start()
+    {
+        state = new WateringPlotState(this, 0.0f);
+        Weather._instance.WeatherChangeUpdate += OnWeatherChange;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        //Early termination (nothing grows if it is snowing)
-        if (Weather._instance.currentWeather == Weather.WeatherState.Snow)
-            return;
-
+        //There is a 1 in randomTickUpper chance that 
+        bool doTick = (UnityEngine.Random.Range(0, randomTickUpper) == 0);
+            state.PlotBehaviour(doTick);
         
-
-
-       //There is a 1 in randomTickUpper chance that 
-       if (UnityEngine.Random.Range(0,randomTickUpper) == 0)
-        {
-            //if it is raining, add hydrated vaue.
-            if (Weather._instance.currentWeather == Weather.WeatherState.Rain)
-            {
-                hydrated += 0.1f;
-            }
-
-            //Storm is rain on steroids.
-            if (Weather._instance.currentWeather == Weather.WeatherState.Storm)
-            {
-                hydrated += 0.3f;
-            }
-
-        }
-
-        if (hydrated > hypdrationMax)
-        {
-            hydrated = hypdrationMax;
-        }
-
-
-       
-
-        //Check if sunny to grow.
-        if (Weather._instance.currentWeather == Weather.WeatherState.Sunny && hydrated > 0.0f && growth <= 1 && plantType != CropSpawner.PlantType.None)
-        {
-            //Spend hydrated to get a random lesser amount of growth
-            hydrated -= Time.deltaTime;
-            growth += Time.deltaTime * UnityEngine.Random.Range(0.0f, 0.3f);
-
-
-            if (growth >= 1.0f)
-            {
-                CropComplete();
-                growth = 0.0f;
-            }
-        }
 
         UpdateVisuals();
     }
 
-    void UpdateVisuals()
+
+    public void OnWeatherChange()
+    {
+        state.Transition(Weather._instance.currentWeather);
+    }
+
+    public void UpdateVisuals()
     {
 
         
@@ -119,8 +88,9 @@ public class Plot : MonoBehaviour
         this.plantType = plantType;
     }
 
-    void CropComplete()
+    public void CropComplete()
     {
+        growth = 0.0f;
         CropSpawner._instance.SpawnCrop(plantType, cropSpawnPoint.transform.position);
 
         plant.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
